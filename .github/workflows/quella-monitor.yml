@@ -27,6 +27,28 @@ jobs:
       - name: Run Quella QA Monitor
         run: npx playwright test
 
+      - name: Send Email Alert on Failure
+        if: failure()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: "QUELLA ALERT: Chatbot QA Monitor Failed!"
+          to: hasanka@fexcon.com
+          from: "Quella QA Monitor <${{ secrets.MAIL_USERNAME }}>"
+          body: |
+            Attention QA Team,
+
+            The Quella Chatbot QA Monitor detected an issue during the automated check.
+
+            Repository: ${{ github.repository }}
+            Workflow Run: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+            Please check GitHub Actions artifacts for failure screenshots and CSV logs.
+
       - name: Upload Reports on Failure or Completion
         if: always()
         uses: actions/upload-artifact@v4
