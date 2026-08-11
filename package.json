@@ -1,0 +1,21 @@
+{
+  "name": "quella-chatbot-qa-monitor",
+  "version": "1.0.0",
+  "description": "Playwright TypeScript Automated Uptime & Freeze Monitor for Quella Chatbot",
+  "main": "dist/src/tests/quella-monitor.spec.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
+    "test:debug": "npx playwright test --debug",
+    "monitor": "node scripts/run-scheduler.js",
+    "report:html": "npx playwright show-report reports/html-report",
+    "report:allure": "npx allure generate allure-results reports/allure-results --clean -o reports/allure-report && npx allure open reports/allure-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "@types/node": "^20.0.0",
+    "allure-commandline": "^2.43.0",
+    "allure-playwright": "^3.10.2",
+    "typescript": "^5.0.0"
+  }
+}
