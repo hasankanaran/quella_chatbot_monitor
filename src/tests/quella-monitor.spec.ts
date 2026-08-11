@@ -16,7 +16,7 @@ test.describe('Quella Chatbot Monitor', () => {
 
       // First question check
       await quella.askQuestion('Where is my order?');
-      await quella.waitForAnswer('FORCE_FAIL_TEST');
+      await quella.waitForAnswer('order');
 
       // Second question check in same chat window
       await quella.askQuestion('Is same-day delivery available?');
