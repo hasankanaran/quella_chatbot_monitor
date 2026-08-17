@@ -18,7 +18,7 @@ export class QuellaPage {
   // Navigate to the Wishque UAT web application
   async gotoWebsite() {
     console.log('Opening website...');
-    await this.page.goto('https://wishqueuat.fexcon.com.au/');
+    await this.page.goto('https://www.wishque.com/');
   }
 
   // Open the chat widget launcher
